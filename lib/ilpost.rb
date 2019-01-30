@@ -1,6 +1,4 @@
-require "ilpost/version"
+require_relative "./ilpost/version"
+require_relative './ilpost/cli'
 
-module Ilpost
-  class Error < StandardError; end
-  # Your code goes here...
-end
+
