@@ -1,5 +1,5 @@
 class Ilpost::Post
-  attr_accessor :title, :section, :url
+  attr_accessor :title, :section, :url, :subtitle
 
   def self.articles
     articles = []
@@ -9,12 +9,16 @@ class Ilpost::Post
 
   def self.scraper
     doc = Nokogiri::HTML(open("https://www.ilpost.it/"))
-
     article = self.new
-    article.title = doc.css("div.h2.entry-title a.title").text.strip
-    article.subtitle = doc.css("div.h2.p a.title").text.strip
-    #article.url =
+    article.title = doc.css("div.entry-content h2.entry-title a").first.text
+    article.subtitle = doc.css("div.entry-content p").first.text.strip
+    article.url = doc.css("div.entry-content h2.entry-title a").first.attr("href")
+    #binding.pry
     article
   end #scraper
 
 end #class
+
+# article is a new instance of Post
+# article has a title
+#articles is an array with many instances of the Post class

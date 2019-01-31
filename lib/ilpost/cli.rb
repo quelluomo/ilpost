@@ -7,10 +7,13 @@ class Ilpost::CLI
   end
 
   def list_home
-    puts "Ecco i titoli de Il Post:"
-    @articles = Ilpost::Post.articles
-    @articles.each.with_index(1) do |article, index|
-      puts "#{index} - #{article}"
+    puts "Ecco i titoli de Il Post:".colorize(:green)
+    puts "-------------------------".colorize(:green)
+    articles = Ilpost::Post.articles
+    articles.each.with_index(1) do |article, index|
+      puts "#{index}. #{article.title}".colorize(:blue)
+      puts "   #{article.subtitle}"
+      puts "   #{article.url}".colorize(:red)
     end
   end
 
