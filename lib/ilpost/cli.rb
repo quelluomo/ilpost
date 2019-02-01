@@ -12,8 +12,8 @@ class Ilpost::CLI
     articles = Ilpost::Post.articles
     articles.each.with_index(1) do |article, index|
       puts "#{index}. #{article.title}".colorize(:blue)
-      puts "   #{article.subtitle}"
-      puts "   #{article.url}".colorize(:red)
+      #puts "   #{article.subtitle}"
+      #puts "   #{article.url}".colorize(:red)
     end
   end
 
