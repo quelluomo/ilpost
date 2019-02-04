@@ -9,7 +9,7 @@ class Ilpost::CLI
   def list_home
     puts "Ecco i titoli de Il Post:".colorize(:green)
     puts "-------------------------".colorize(:green)
-    articles = Ilpost::Post.articles
+    articles = Ilpost::Post.news
     articles.each.with_index(1) do |article, index|
       puts "#{index}. #{article.title}".colorize(:blue)
       #puts "   #{article.subtitle}"

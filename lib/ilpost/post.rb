@@ -1,11 +1,11 @@
 class Ilpost::Post
   attr_accessor :title, :section, :url, :subtitle
 
-  def self.articles
-    articles = []
-    articles << self.scraper
-    articles
-  end
+  #def self.news
+  #  news = []
+  #  news << self.scraper
+  #  news
+#  end
 
 #  def self.scraper
 #    doc = Nokogiri::HTML(open("https://www.ilpost.it/"))
@@ -16,18 +16,20 @@ class Ilpost::Post
 #    article
 #  end #scraper
 
-def self.scraper
-  doc = Nokogiri::HTML(open("https://www.ilpost.it/"))
+def self.post_homepage
+  Nokogiri::HTML(open("https://www.ilpost.it/"))
+end
 
+def self.scraper
   articles = []
-  i = 0
-  doc.css("div.entry-content").each do |article|
-  article = {}
-  article[:title] = doc.css("h2.entry-title a:nth-child(#{i})").text
-  article[:subtitle] = doc.css("p:nth-child(#{i})").text.strip
-  article[:url] = doc.css("h2.entry-title a:nth-child(#{i})").attr("href")
-  articles << article
-  i+=1
+  home = self.post_homepage.css("article")
+  home.css("div.entry-content").collect do |news|
+  title = news.css("h2.entry-title a").text
+  subtitle = news.css("p").text.strip
+  url = news.css("h2.entry-title a").attr("href").text
+
+  article_hash = {:title => title, :subtitle => subtitle, :url => url}
+  articles << article_hash
   #binding.pry
 end
   articles
