@@ -19,6 +19,7 @@ class Ilpost::CLI
       puts "#{index}. #{article[:title]}".colorize(:blue)
       puts "   #{article[:subtitle]}"
       puts "   #{article[:url]}".colorize(:red)
+      puts "-------------------------".colorize(:yellow)
     end
   end
 
@@ -30,6 +31,7 @@ class Ilpost::CLI
       puts "#{index}. #{article[:title]}".colorize(:blue)
       puts "   #{article[:subtitle]}"
       puts "   #{article[:url]}".colorize(:red)
+      puts "-------------------------".colorize(:yellow)
     end
   end
 
@@ -72,10 +74,12 @@ class Ilpost::CLI
       elsif input == "video"
         self.list_section(input)
       elsif input =="esci"
+        puts "-------------------------".colorize(:yellow)
         puts "Arrivederci e a presto!"
         break
       else
         puts "Mi spiace, non ho capito.".colorize(:red)
+        puts "-------------------------".colorize(:yellow)
       end
     end
   end
