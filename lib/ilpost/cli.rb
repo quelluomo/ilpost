@@ -3,7 +3,12 @@
 class Ilpost::CLI
 
   def call
+    hello
     menu
+  end
+
+  def hello
+    puts "Benvenuto!"
   end
 
   def list_home
@@ -31,10 +36,9 @@ class Ilpost::CLI
   def menu
     input = nil
     while input != "esci"
-      puts "Benvenuto!"
-      puts "Digita 'home' per i titoli principali, o digita un numero per aprire un articolo."
+      puts "Digita 'home' per i titoli principali."
       puts "Digita 'esci' per uscire o digita una delle seguenti sezioni:"
-      puts "italia - mondo - politica - tecnologia - internet - scienza - cultura - economia - sport - media - moda - libri - auto - video \n".colorize(:yellow)
+      puts "home - italia - mondo - politica - tecnologia - internet - scienza - cultura - economia - sport - media - moda - libri - auto - video \n".colorize(:yellow)
       input = gets.strip.downcase
 
       if input == "home"
@@ -68,6 +72,7 @@ class Ilpost::CLI
       elsif input == "video"
         self.list_section(input)
       elsif input =="esci"
+        puts "Arrivederci e a presto!"
         break
       else
         puts "Mi spiace, non ho capito.".colorize(:red)
