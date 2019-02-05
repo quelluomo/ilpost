@@ -4,12 +4,25 @@ class Ilpost::CLI
 
   def call
     list_home
+    menu
   end
 
   def list_home
     puts "Ecco i titoli de Il Post:".colorize(:green)
     puts "-------------------------".colorize(:green)
     articles = Ilpost::Post.news
+    articles.each.with_index(1) do |article, index|
+      puts "#{index}. #{article[:title]}".colorize(:blue)
+      puts "   #{article[:subtitle]}"
+      puts "   #{article[:url]}".colorize(:red)
+    end
+  end
+  
+  def list_sections(url)
+    url = Ilpost::Post.section(url)
+    puts "Ecco i titoli della sezione:".colorize(:green)
+    puts "-------------------------".colorize(:green)
+    articles = Ilpost::Post.section
     articles.each.with_index(1) do |article, index|
       puts "#{index}. #{article[:title]}".colorize(:blue)
       puts "   #{article[:subtitle]}"
@@ -28,7 +41,10 @@ class Ilpost::CLI
       scienza - cultura - economia - sport - media \n
       moda - libri - auto - video \n"
       input = gets.strip.downcase
-
+      
+      if input == "italia"
+        list_sections(italia)
+      end
     end
   end
 
