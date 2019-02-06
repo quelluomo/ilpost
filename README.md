@@ -1,4 +1,4 @@
-# Ilpost CLI (ENG)
+# Ilpost CLI
 
 Welcome to IL POST. This Command Line Interface (CLI) allows the user to browse through all the titles and all the sections of the Italian online newspaper Il Post.
 
@@ -33,7 +33,7 @@ Click on any link to open a browser window redirecting to it.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/'quelluomo'/ilpost
+Bug reports and pull requests are welcome on GitHub at https://github.com/quelluomo/ilpost
 
 ## License
 
